@@ -1,7 +1,9 @@
-import React from "react"
+import React from 'react';
+import BackgroundMain from './components/container/Background/background';
+import './styles/scss/_main.scss';
 
-function App(){
-    return <h1>Fuerza Test</h1>
+function App() {
+  return <BackgroundMain></BackgroundMain>;
 }
 
-export default App
+export default App;
