@@ -1,0 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Roboto:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Rubik:ital,wght@1,700&display=swap');
+html,
+body,
+* {
+  padding: 0;
+  margin: 0;
+  font-family: 'Lato', sans-serif;
+  box-sizing: border-box;
+}
+::-webkit-scrollbar {
+  width: 2px;
+}
+
+html {
+  font-size: '62.5%';
+}
+
+$light-400: #faf2ec;
+$light-500: #f8e5d6;
+$primary-500: #804627;
+$primary-600: #834825;
+$secondary-500: #6e3421;
+$lightWhite: rgba(255, 255, 255, 0.42);
+$dark-500: #333438;
+$grey: #736d6b;
