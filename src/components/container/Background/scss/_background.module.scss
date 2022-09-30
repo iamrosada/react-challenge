@@ -1,0 +1,22 @@
+@import '../../../../styles/scss/main';
+
+.box-container {
+  background: $light-500;
+  min-height: 100vh;
+  position: relative;
+}
+.box-logo {
+  width: 100vw;
+  position: fixed;
+  min-height: 100vh;
+  padding: 4.2rem 0 0 0;
+  z-index: 1;
+}
+.box-section {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  max-width: 37.4rem;
+  margin: 0 auto;
+  height: 100%;
+}
