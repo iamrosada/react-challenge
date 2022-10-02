@@ -18,14 +18,26 @@ const ContainerComponent: React.FC = ({ children }) => {
 const FormComponent: React.FC = () => {
   return (
     <section className={styles['container-form']}>
-      <form className={styles.signin}>
+      <form
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+        }}
+      >
         <Input label="Your username" type="text" />
 
         <Input label="Your Password" type="password" />
         <LinkTextCustom tiny is to="/">
           Forgot password?
         </LinkTextCustom>
-        <Button title="Log in" />
+        <div
+          style={{
+            display: 'flex',
+            justifyContent: 'center',
+          }}
+        >
+          <Button title="Log in" />
+        </div>
       </form>
     </section>
   );
