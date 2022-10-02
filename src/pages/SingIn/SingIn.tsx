@@ -1,9 +1,10 @@
 import React from 'react';
 import { LogoMainSVG } from '../../assets/svgs';
+import Button from '../../components/Button/button';
+import { Input } from '../../components/Input/input-auth';
 import LinkTextCustom from '../../components/LinkTextCustom/LinkTextCustom';
 import TitleAuth from '../../components/TitleAuth/titleAuth';
-// import { useNavigate } from 'react-router-dom';
-// import { useForm, SubmitHandler } from 'react-hook-form';
+
 import styles from './scss/_singIn.module.scss';
 
 const SectionComponent: React.FC = ({ children }) => {
@@ -14,15 +15,27 @@ const ContainerComponent: React.FC = ({ children }) => {
   return <div className={styles.containerComponent}>{children}</div>;
 };
 
-const FormComponent: React.FC = ({ children }) => {
-  return <form action="">{children}</form>;
+const FormComponent: React.FC = () => {
+  return (
+    <section className={styles['container-form']}>
+      <form className={styles.signin}>
+        <Input label="Your username" type="text" />
+
+        <Input label="Your Password" type="password" />
+        <LinkTextCustom tiny is to="/">
+          Forgot password?
+        </LinkTextCustom>
+        <Button title="Log in" />
+      </form>
+    </section>
+  );
 };
 
 const TitleContainer = () => {
   return (
     <div className={styles['title-container']}>
       <TitleAuth>Sing In</TitleAuth>
-      <LinkTextCustom bold tiny>
+      <LinkTextCustom bold tiny to="/">
         Sing up
       </LinkTextCustom>
     </div>
@@ -31,10 +44,10 @@ const TitleContainer = () => {
 const SignIn = () => {
   return (
     <SectionComponent>
-      <LogoMainSVG width="20.524rem" height="4.3rem" />
-      <TitleContainer />
       <ContainerComponent>
-        <FormComponent></FormComponent>
+        <LogoMainSVG width="20.524rem" height="4.3rem" />
+        <TitleContainer />
+        <FormComponent />
       </ContainerComponent>
     </SectionComponent>
   );
