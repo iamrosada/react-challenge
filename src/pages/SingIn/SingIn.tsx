@@ -46,7 +46,7 @@ const FormComponent: React.FC = () => {
 const TitleContainer = () => {
   return (
     <div className={styles['title-container']}>
-      <TitleAuth>Sing In</TitleAuth>
+      <TitleAuth>Sign in</TitleAuth>
       <LinkTextCustom bold tiny to="/">
         Sing up
       </LinkTextCustom>
