@@ -109,18 +109,11 @@
   & > section {
     padding-top: 6rem;
     lign-items: center;
-    flex-direction: column;
+    // flex-direction: column;
     display: flex;
     justify-content: center;
     align-items: center;
-
-    & > img.image_ {
-      position: absolute;
-      left: 6.67%;
-      right: 7.04%;
-      top: 39.16%;
-      margin-bottom: 10.8rem;
-    }
+    flex-wrap: wrap;
     & > button {
       margin-top: 6rem;
       display: flex;
@@ -166,5 +159,6 @@
   background-color: #000000;
 }
 
-///...
-///
+.container_view_jornal {
+  display: flex !important;
+}
