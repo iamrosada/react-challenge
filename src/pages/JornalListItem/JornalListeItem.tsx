@@ -42,6 +42,9 @@ export const JournalList = ({ ...props }: journalType) => {
   );
 };
 const JornalListItem = () => {
+  const handleNavigate = () => {
+    window.location.href = '/journal/create';
+  };
   return (
     <main className={styles.containerEmpty}>
       <header>
@@ -49,7 +52,7 @@ const JornalListItem = () => {
           <img className="logo" src={imageLogo} alt="Logo" />
         </div>
 
-        <button type="button">
+        <button type="button" onClick={handleNavigate}>
           <svg
             width="12"
             height="12"
