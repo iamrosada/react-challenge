@@ -17,7 +17,7 @@ export const JournalList = ({ ...props }: journalType) => {
       ? (model = 'journal_par')
       : (model = 'journal_impar');
   }
-  console.log(styles.journal + model);
+
   return (
     <div
       className={
@@ -77,8 +77,8 @@ const JornalListItem = () => {
           </Link>
         ))} */}
         <JournalList title="risad" index={'1'} />
-        <Button title="Save Journal" />
       </section>
+      <Button title="Save Journal" />
     </main>
   );
 };
