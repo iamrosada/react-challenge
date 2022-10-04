@@ -1,28 +1,20 @@
-import React, { useState } from 'react';
+import React, { ChangeEventHandler } from 'react';
 import styles from './scss/_auth.module.scss';
 
 type Props = {
   type: string;
   label: string;
+  name: string;
+  onChange: ChangeEventHandler;
 };
 
-export const TextInput: React.FC<Props> = ({ type, label }) => {
-  const [value, setValue] = useState('');
-
-  const handleChange = (e: {
-    target: { value: React.SetStateAction<string> };
-  }) => {
-    setValue(e.target.value);
-  };
-
+export const Input: React.FC<Props> = ({ type, label, name, onChange }) => {
   return (
-    <form>
-      <div className={styles['input-container']}>
-        <label className={value && styles.filled} htmlFor="name">
-          {label}
-        </label>
-        <input type={type} onChange={handleChange} />
-      </div>
-    </form>
+    <div className={styles['input-container']}>
+      <label className={styles.filled} htmlFor="name">
+        {label}
+      </label>
+      <input type={type} onChange={onChange} name={name} />
+    </div>
   );
 };
