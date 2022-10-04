@@ -1,0 +1,123 @@
+.content_textarea {
+  width: 100%;
+  height: 16rem;
+  padding: 0.8rem 0.5rem;
+  border-radius: 0.3rem;
+  border: none;
+  font-weight: 600;
+  color: #804627;
+  transition: all ease 0.2s;
+  outline: none;
+
+  &::-webkit-input-placeholder {
+    color: #804627;
+  }
+
+  &:focus {
+    box-shadow: inset 0px 1px 2px rgba(0, 0, 0, 0.01);
+    filter: drop-shadow(0px 0px 4px #b8e5e3) drop-shadow(0px 0px 2px #b8e5e3);
+
+    &::-webkit-input-placeholder {
+      position: absolute;
+      top: 0.1rem;
+      color: #736d6b;
+      font-size: 0.6rem;
+      font-weight: normal;
+    }
+  }
+}
+
+.containerEmpty {
+  display: flex;
+  max-width: 1100px;
+  margin: 0 auto;
+  flex-direction: column;
+  padding: 90px 20px 0px 20px;
+  align-items: center;
+
+  & > header {
+    height: 5vh;
+    margin-bottom: 2rem;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-between;
+    display: flex;
+    & > img {
+      position: absolute;
+      width: 146.6px;
+      height: 30px;
+      left: 29px;
+      top: 42px;
+    }
+    & > div {
+      display: flex;
+      align-items: center;
+      align-content: center;
+      & > img {
+        width: 20.6px;
+        height: 30px;
+        left: 29px;
+        top: 42px;
+      }
+    }
+  }
+
+  & > section {
+    padding-top: 6rem;
+    lign-items: center;
+    flex-direction: column;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    & > input {
+      margin-bottom: 2.8rem;
+    }
+    & > img.image_ {
+      position: absolute;
+      left: 6.67%;
+      right: 7.04%;
+      top: 39.16%;
+      margin-bottom: 10.8rem;
+    }
+    & > button {
+      margin-top: 6rem;
+      display: flex;
+      text-align: center;
+      align-items: center;
+      justify-content: center;
+    }
+    & > span {
+      position: fixed;
+      left: 50.67%;
+      top: 50%;
+    }
+  }
+}
+.input {
+  outline: none;
+  width: 100%;
+  height: 3.5rem;
+  padding: 0.5rem;
+  border-radius: 0.3rem;
+  border: none;
+  font-weight: 600;
+  color: #804627;
+  transition: all ease 0.2s;
+
+  &::-webkit-input-placeholder {
+    color: #804627;
+  }
+
+  &:focus {
+    box-shadow: inset 0px 1px 2px rgba(0, 0, 0, 0.01);
+    filter: drop-shadow(0px 0px 4px #b8e5e3) drop-shadow(0px 0px 2px #b8e5e3);
+
+    &::-webkit-input-placeholder {
+      position: absolute;
+      top: 0.1rem;
+      color: #736d6b;
+      font-size: 0.6rem;
+      font-weight: normal;
+    }
+  }
+}
