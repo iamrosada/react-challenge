@@ -1,0 +1,17 @@
+@import '../../../styles/scss/main';
+
+.button-add {
+  height: 4rem;
+  border-radius: 2.4rem;
+  border: 1px solid;
+  border-color: $secondary-500;
+  display: flex;
+  padding: 1.2rem 1.3rem;
+  background-color: transparent;
+  color: $secondary-500;
+}
+.text-children {
+  margin-left: 0.8rem;
+  font-weight: 500;
+  font-size: 1.4rem;
+}
