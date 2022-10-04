@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { toast } from 'react-toastify';
 import React, { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import imageLogo from '../../assets/images/logo.svg';
@@ -46,13 +47,14 @@ const CreateJornal = () => {
         });
         if (response.status === 201) {
           navigate('/journals/entries');
-          // 'Journal created successfully'
+          toast.success('Journal created successfully');
         }
       } catch (e) {
         console.log(e);
+        toast.error('Failed to create journal entry');
       }
     } else {
-      alert('Title cannot be empty');
+      toast('Title cannot be empty');
     }
   };
   return (

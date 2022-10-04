@@ -2,6 +2,7 @@ import React, { useContext, useState } from 'react';
 import imageLogo from '../../assets/images/logo.svg';
 import backLogo from '../../assets/images/back.svg';
 import Button from '../../components/Button/button';
+import { toast } from 'react-toastify';
 import styles from './scss/_createNotes.module.scss';
 import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
@@ -50,7 +51,6 @@ const CreateNotes = () => {
   };
   const handleCreateEntry = async () => {
     if (title && content) {
-      console.log(title, content);
       //const noteData = { title: title, content: content, userId: userId };
       try {
         const response = await axios.post(
@@ -63,12 +63,21 @@ const CreateNotes = () => {
         );
         if (response.status === 201) {
           navigate(`/journal/${id}/posts`);
+          toast.success(
+            response.status === 201
+              ? `Successfully created ${title}`
+              : `Failed to create ${title}`
+          );
         }
-      } catch (err) {
-        console.log(err);
+      } catch (error) {
+        let errorMessage = 'Failed to do something exceptional';
+        if (error instanceof Error) {
+          errorMessage = error.message;
+        }
+        toast.error(errorMessage);
       }
     } else {
-      alert('Title and content are required');
+      toast.error('Title and content are required');
     }
   };
 

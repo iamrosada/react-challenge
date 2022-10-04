@@ -71,12 +71,9 @@ const NotesListItem = () => {
             </div>
           </header>
           <section>
-            {entries.map(
-              (entry: any, i: number) => (
-                console.log('entry', entry),
-                (<NotesList key={i} notes={entry.content} />)
-              )
-            )}
+            {entries.map((entry: any, i: number) => (
+              <NotesList key={i} notes={entry.content} />
+            ))}
           </section>
         </main>
       ) : (

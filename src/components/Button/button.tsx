@@ -1,14 +1,14 @@
 import React, { MouseEventHandler } from 'react';
-import styles from './scss/_button.custom.module.css';
+import styles from './scss/_button.module.scss';
 
-type button = {
+type buttonType = {
   title?: string;
   onClick?: MouseEventHandler;
 };
 
-const Button: React.FC<button> = ({ title, onClick }) => {
+const Button: React.FC<buttonType> = ({ title, onClick }) => {
   return (
-    <button className={styles['button-custom']} onClick={onClick}>
+    <button type="submit" onClick={onClick} className={styles['custom_custom']}>
       {title}
     </button>
   );

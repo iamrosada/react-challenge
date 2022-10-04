@@ -1,21 +1,12 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import { Link, useNavigate } from 'react-router-dom';
 import React, { FormEvent } from 'react';
-import { LogoMainSVG } from '../../assets/svgs';
 import Button from '../../components/Button/button';
 import { Input } from '../../components/Input/input-auth';
-import LinkTextCustom from '../../components/LinkTextCustom/LinkTextCustom';
-import TitleAuth from '../../components/TitleAuth/titleAuth';
-
-import styles from '../SingIn/scss/_singIn.module.scss';
-
-const SectionComponent: React.FC = ({ children }) => {
-  return <section className={styles.sectionComponent}>{children}</section>;
-};
-const ContainerComponent: React.FC = ({ children }) => {
-  return <div className={styles.containerComponent}>{children}</div>;
-};
+import Logo from '../../assets/images/logo.svg';
+import styles from './scss/_signup.module.scss';
 
 const FormComponent: React.FC = () => {
   const navigate = useNavigate();
@@ -29,21 +20,19 @@ const FormComponent: React.FC = () => {
       email: formData.get('email') as string,
       password: formData.get('password') as string,
     };
-    console.log(JSON.stringify(formData));
-    try {
-      const response = await axios.post(
-        'https://fuerza.test/auth/signup',
-        userData
-      );
-      if (response.status === 201) {
-        navigate('/');
-      }
-    } catch (err) {
-      console.log(err);
-    }
+
+    userData.name && userData.password
+      ? axios
+          .post('https://fuerza.test/auth/signup', userData)
+          .then(() => {
+            navigate('/');
+            toast.success('User created successfully');
+          })
+          .catch((error) => toast.error(error.response.data.data.message))
+      : toast.error('Username and password are required');
   };
   return (
-    <section className={styles['container-form']}>
+    <section className={styles.section__container}>
       <form
         style={{
           display: 'flex',
@@ -84,25 +73,21 @@ const FormComponent: React.FC = () => {
   );
 };
 
-const TitleContainer = () => {
-  return (
-    <div className={styles['title-container']}>
-      <TitleAuth>Sign up</TitleAuth>
-      <LinkTextCustom bold tiny to="/">
-        Already have an account
-      </LinkTextCustom>
-    </div>
-  );
-};
 const SignUpPage = () => {
   return (
-    <SectionComponent>
-      <ContainerComponent>
-        <LogoMainSVG width="20.524rem" height="4.3rem" />
-        <TitleContainer />
+    <main className={styles.main_done}>
+      <img src={Logo} alt="logo tipo" />
+
+      <section>
+        <div>
+          <h2>Sign Up</h2>
+
+          <Link to="/">Already have account</Link>
+        </div>
+
         <FormComponent />
-      </ContainerComponent>
-    </SectionComponent>
+      </section>
+    </main>
   );
 };
 

@@ -1,25 +1,19 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import Axios from 'axios';
+import { toast } from 'react-toastify';
 import React, { FormEvent, useContext } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { LogoMainSVG } from '../../assets/svgs';
+import { Link, useNavigate } from 'react-router-dom';
 import Button from '../../components/Button/button';
 import { Input } from '../../components/Input/input-auth';
 import LinkTextCustom from '../../components/LinkTextCustom/LinkTextCustom';
 import TitleAuth from '../../components/TitleAuth/titleAuth';
 import { AuthContext } from '../../context/userAuthContext';
-
+import Logo from '../../assets/images/logo.svg';
 import styles from './scss/_singIn.module.scss';
-
-const SectionComponent: React.FC = ({ children }) => {
-  return <section className={styles.sectionComponent}>{children}</section>;
-};
-
-const ContainerComponent: React.FC = ({ children }) => {
-  return <div className={styles.containerComponent}>{children}</div>;
-};
+import axios from 'axios';
 
 const FormComponent: React.FC = () => {
+  const [message, setMessage] = React.useState<string>();
   const { setIsUserLogged, setUserId } = useContext(AuthContext);
 
   const navigate = useNavigate();
@@ -33,30 +27,21 @@ const FormComponent: React.FC = () => {
       name: formData.get('username') as string,
       password: formData.get('password') as string,
     };
-    try {
-      const response = await Axios.post(
-        'https://fuerza.test/auth/login',
-        UserData
-      );
-      console.log(response.status);
-      if (response.status === 201) {
-        navigate('/journals/entries/create');
+
+    axios
+      .post('https://fuerza.test/auth/login', UserData)
+      .then((response) => {
         setUserId(response.data.user.id);
+
+        toast.success('User logged successfully');
+        navigate('/journals/entries/create');
         setIsUserLogged(true);
-      }
-    } catch (err) {
-      console.log(err);
-    }
+      })
+      .catch((error) => toast.error(error.response.data.data.message));
   };
   return (
-    <section className={styles['container-form']}>
-      <form
-        style={{
-          display: 'flex',
-          flexDirection: 'column',
-        }}
-        onSubmit={handleSubmitSigIn}
-      >
+    <section className={styles.section__container}>
+      <form onSubmit={handleSubmitSigIn}>
         <Input
           label="Your username"
           type="text"
@@ -86,25 +71,21 @@ const FormComponent: React.FC = () => {
   );
 };
 
-const TitleContainer = () => {
-  return (
-    <div className={styles['title-container']}>
-      <TitleAuth>Sign in</TitleAuth>
-      <LinkTextCustom bold tiny to="/signup">
-        Sing up
-      </LinkTextCustom>
-    </div>
-  );
-};
 const SignIn = () => {
   return (
-    <SectionComponent>
-      <ContainerComponent>
-        <LogoMainSVG width="20.524rem" height="4.3rem" />
-        <TitleContainer />
+    <main className={styles.main_done}>
+      <img src={Logo} alt="logo tipo" />
+
+      <section>
+        <div>
+          <h2>Sign In</h2>
+          {/* <a href="/signup">Sign up</a> */}
+          <Link to="/signup">Sign up</Link>
+        </div>
+
         <FormComponent />
-      </ContainerComponent>
-    </SectionComponent>
+      </section>
+    </main>
   );
 };
 
