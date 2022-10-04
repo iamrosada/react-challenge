@@ -1,0 +1,24 @@
+@import '../../../styles/scss/main';
+
+.custom_custom {
+  // left: 28.27%;
+  // right: 28.8%;
+  // top: 76.23%;
+  // bottom: 18.84%;
+  border: 2px solid #834825;
+  border-radius: 4rem;
+  min-width: 4rem;
+  font-size: 1rem;
+  height: 4rem;
+  font-weight: 600;
+  text-align: center;
+  color: $default;
+  margin: 0 auto;
+  width: 10rem;
+  background: #834825;
+  color: #ffffff;
+  border-radius: 2.5rem;
+  height: 2.5rem;
+  font-weight: 600;
+  cursor: pointer;
+}
