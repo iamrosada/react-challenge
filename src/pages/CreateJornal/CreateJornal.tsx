@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React, { useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
 import imageLogo from '../../assets/images/logo.svg';
 import Button from '../../components/Button/button';
 import { AuthContext } from '../../context/userAuthContext';
@@ -34,8 +35,9 @@ export const Journal = ({ ...props }: journalType) => {
 const CreateJornal = () => {
   const { userId } = useContext(AuthContext);
   const [title, setTitle] = React.useState<string>();
+  const navigate = useNavigate();
 
-  const handleCreateJornal = async () => {
+  const handleCreateJournal = async () => {
     if (title) {
       try {
         const response = await axios.post('https://fuerza.test/journals/', {
@@ -43,7 +45,7 @@ const CreateJornal = () => {
           title,
         });
         if (response.status === 201) {
-          window.location.href = '/journal';
+          navigate('/journals/entries');
           // 'Journal created successfully'
         }
       } catch (e) {
@@ -70,7 +72,7 @@ const CreateJornal = () => {
           title="Save Journal"
           onClick={(e) => {
             e.preventDefault();
-            handleCreateJornal();
+            handleCreateJournal();
           }}
         />
       </section>

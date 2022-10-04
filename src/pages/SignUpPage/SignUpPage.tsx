@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 import React, { FormEvent } from 'react';
 import { LogoMainSVG } from '../../assets/svgs';
 import Button from '../../components/Button/button';
@@ -16,10 +17,8 @@ const ContainerComponent: React.FC = ({ children }) => {
   return <div className={styles.containerComponent}>{children}</div>;
 };
 
-type HanleSubmit = {
-  handleSubmit: () => void;
-};
 const FormComponent: React.FC = () => {
+  const navigate = useNavigate();
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
@@ -37,7 +36,7 @@ const FormComponent: React.FC = () => {
         userData
       );
       if (response.status === 201) {
-        window.location.href = '/journal';
+        navigate('/');
       }
     } catch (err) {
       console.log(err);
