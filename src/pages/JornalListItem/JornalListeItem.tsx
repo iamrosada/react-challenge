@@ -12,18 +12,18 @@ type journalType = {
 };
 
 export const JournalList = ({ ...props }: journalType) => {
-  var model: string = '';
+  var viewJournal: string = '';
 
   if (props.index) {
     parseInt(props.index) % 2 === 0
-      ? (model = 'journal_par')
-      : (model = 'journal_impar');
+      ? (viewJournal = 'journal_par')
+      : (viewJournal = 'journal_impar');
   }
 
   return (
     <div
       className={
-        model === 'journal_par'
+        viewJournal === 'journal_par'
           ? styles.journal__journal_par
           : styles.journal__journal_impar
       }
@@ -32,7 +32,7 @@ export const JournalList = ({ ...props }: journalType) => {
       <div className={styles.journal__content}>
         <h1
           className={
-            model === 'journal_par'
+            viewJournal === 'journal_par'
               ? styles.journal__title__journal_par
               : styles.journal__title__journal_impar
           }
