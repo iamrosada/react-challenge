@@ -1,7 +1,9 @@
-import React from 'react';
-// import { Link } from 'react-router-dom';
+import axios from 'axios';
+import React, { useContext } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import imageLogo from '../../assets/images/logo.svg';
-import Button from '../../components/Button/button';
+import { JournalContext } from '../../context/JournalContext';
+import { AuthContext } from '../../context/userAuthContext';
 import styles from './scss/_jornalListItem.module.scss';
 
 type journalType = {
@@ -42,9 +44,21 @@ export const JournalList = ({ ...props }: journalType) => {
   );
 };
 const JornalListItem = () => {
+  const { journals, setJournals, setJournalName } = useContext(JournalContext);
+  const { userId } = useContext(AuthContext);
+
+  const navigate = useNavigate();
+
   const handleNavigate = () => {
-    window.location.href = '/journal/create';
+    navigate('/journals/create');
   };
+
+  React.useEffect(() => {
+    axios.get(`https://fuerza.test/journals/${userId}`).then((response) => {
+      setJournals(response.data.journals);
+    });
+  }, [setJournals, userId]);
+
   return (
     <main className={styles.containerEmpty}>
       <header>
@@ -70,18 +84,16 @@ const JornalListItem = () => {
         </button>
       </header>
       <section>
-        {/* {journals.map((journal) => (
+        {journals.map((journal: any) => (
           <Link
-            to={`journal/${journal.id}/posts`}
-            onClick={() => setJournalName(journal.title)}
+            to={`/journal/${journal.id}/posts`}
             key={journal.id}
+            onClick={() => setJournalName(journal.title)}
           >
             <JournalList title={journal.title} index={journal.id} />
           </Link>
-        ))} */}
-        <JournalList title="risad" index={'1'} />
+        ))}
       </section>
-      <Button title="Save Journal" />
     </main>
   );
 };
