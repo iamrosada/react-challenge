@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import Axios from 'axios';
 import React, { FormEvent, useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { LogoMainSVG } from '../../assets/svgs';
 import Button from '../../components/Button/button';
 import { Input } from '../../components/Input/input-auth';
@@ -21,6 +22,8 @@ const ContainerComponent: React.FC = ({ children }) => {
 const FormComponent: React.FC = () => {
   const { setIsUserLogged, setUserId } = useContext(AuthContext);
 
+  const navigate = useNavigate();
+
   const handleSubmitSigIn = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
@@ -37,7 +40,7 @@ const FormComponent: React.FC = () => {
       );
       console.log(response.status);
       if (response.status === 201) {
-        window.location.href = '/journals/create';
+        navigate('/journals/entries/create');
         setUserId(response.data.user.id);
         setIsUserLogged(true);
       }
@@ -87,7 +90,7 @@ const TitleContainer = () => {
   return (
     <div className={styles['title-container']}>
       <TitleAuth>Sign in</TitleAuth>
-      <LinkTextCustom bold tiny to="/sign-up">
+      <LinkTextCustom bold tiny to="/signup">
         Sing up
       </LinkTextCustom>
     </div>
