@@ -1,10 +1,9 @@
 enum RoutesOfAllPage {
-  SignIn = '/sign-in',
-  SignUp = '/sign-up',
-  ForgotPassword = '/forgot-password',
-  Journals = '/journals',
+  SignUp = '/signup',
   CreateJournal = '/journals/create',
   JournalEntries = '/journals/entries',
   CreateJournalPost = 'journals/entries/create',
+  CreateNotes = "/journals/entries/journal/:id/posts",
+  NotesListItem = "/journal/:id/posts"
 }
 export { RoutesOfAllPage }
