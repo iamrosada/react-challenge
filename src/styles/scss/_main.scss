@@ -1,20 +1,18 @@
-@import url('https://fonts.googleapis.com/css2?family=Lato:wght@700;900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Roboto:wght@400;500;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Rubik:ital,wght@1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Abhaya+Libre:wght@700&family=Montserrat:wght@400;500;600&display=swap');
+
 html,
 body,
 * {
   padding: 0;
   margin: 0;
-  font-family: 'Lato', sans-serif;
+  font-family: 'Montserrat', sans-serif;
   box-sizing: border-box;
-}
-::-webkit-scrollbar {
-  width: 2px;
+  font-size: 1.6rem;
+  width: 100%;
 }
 
 html {
-  font-size: '62.5%';
+  font-size: 62.5%;
 }
 
 $light-400: #faf2ec;
@@ -25,3 +23,4 @@ $secondary-500: #6e3421;
 $lightWhite: rgba(255, 255, 255, 0.42);
 $dark-500: #333438;
 $grey: #736d6b;
+$default: #ffff;
