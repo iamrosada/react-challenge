@@ -48,7 +48,7 @@
   text-overflow: ellipsis;
   color: #000000;
   font-weight: 700;
-  font-size: 1.5rem;
+  font-size: 2.5rem;
 }
 .journal__title__journal_par {
   text-align: center;
@@ -60,7 +60,7 @@
   text-overflow: ellipsis;
   color: #fff;
   font-weight: 700;
-  font-size: 1.5rem;
+  font-size: 2.5rem;
 }
 
 .containerEmpty {
@@ -108,12 +108,16 @@
 
   & > section {
     padding-top: 6rem;
-    lign-items: center;
-    // flex-direction: column;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
+    display: grid;
+    grid: 200px / auto auto;
+    flex-flow: row wrap;
+    & > a {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-decoration: none;
+      font-size: 12rem;
+    }
     & > button {
       margin-top: 6rem;
       display: flex;
